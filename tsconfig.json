@@ -6,11 +6,6 @@
 		"emitDecoratorMetadata": true,
 		"rootDir": "./",
 		"baseUrl": "./",
-		"paths": {
-			"@modules/*": ["src/modules/*"],
-			"@shared/*": ["src/shared/*"],
-			"@errors/*": ["src/errors/*"]
-		},
 		"outDir": "./dist",
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
