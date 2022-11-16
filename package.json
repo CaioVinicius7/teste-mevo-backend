@@ -6,6 +6,9 @@
 	"scripts": {
 		"dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts"
 	},
+	"prisma": {
+		"seed": "ts-node-dev prisma/seed.ts"
+	},
 	"dependencies": {
 		"@prisma/client": "^4.6.1",
 		"@types/cors": "^2.8.12",
