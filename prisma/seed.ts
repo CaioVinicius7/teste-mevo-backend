@@ -18,28 +18,28 @@ async function main() {
 		data: [
 			{
 				name: "Teclado",
-				isActive: true,
-				currentQuantity: 5
+				is_active: true,
+				current_quantity: 5
 			},
 			{
 				name: "Headset",
-				isActive: true,
-				currentQuantity: 5
+				is_active: true,
+				current_quantity: 5
 			},
 			{
 				name: "Monitor",
-				isActive: true,
-				currentQuantity: 5
+				is_active: true,
+				current_quantity: 5
 			},
 			{
 				name: "Mouse",
-				isActive: true,
-				currentQuantity: 5
+				is_active: true,
+				current_quantity: 5
 			},
 			{
 				name: "Mousepad",
-				isActive: true,
-				currentQuantity: 5
+				is_active: true,
+				current_quantity: 5
 			}
 		]
 	});

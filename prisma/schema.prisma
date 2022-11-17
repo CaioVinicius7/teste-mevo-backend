@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Client {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
 
   order Order[]
 
@@ -18,12 +18,12 @@ model Client {
 }
 
 model Order {
-  id        String   @id @default(uuid())
-  status    String
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  status     String
+  created_At DateTime @default(now())
 
-  client   Client @relation(fields: [clientId], references: [id])
-  clientId String
+  client    Client @relation(fields: [client_id], references: [id])
+  client_id String
 
   Product_Order Product_Order[]
 
@@ -33,22 +33,22 @@ model Order {
 model Product_Order {
   id String @id @default(uuid())
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
 
-  order   Order  @relation(fields: [orderId], references: [id])
-  orderId String
+  order    Order  @relation(fields: [order_id], references: [id])
+  order_id String
 
-  @@unique([productId, orderId])
+  @@unique([product_id, order_id])
   @@map("product_order")
 }
 
 model Product {
-  id              String   @id @default(uuid())
-  name            String   @unique
-  isActive        Boolean
-  currentQuantity Int
-  createdAt       DateTime @default(now())
+  id               String   @id @default(uuid())
+  name             String   @unique
+  is_active        Boolean
+  current_quantity Int
+  created_at       DateTime @default(now())
 
   Product_Order Product_Order[]
 
