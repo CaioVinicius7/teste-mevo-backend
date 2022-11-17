@@ -32,7 +32,7 @@ describe("Get All CLients - Use Case", () => {
 		expect(result[0]).toHaveProperty("order");
 	});
 
-	it("Should be able to return an empty array q if there is no user found in database", async () => {
+	it("Should be able to return an empty array if there is no user found in database", async () => {
 		clientsRepository.getAll = jest.fn().mockReturnValue([]);
 
 		const result = await getAllClientsUseCase.execute();
