@@ -19,4 +19,16 @@ export class ProductsRepository implements IProductsRepository {
 
 		return product;
 	}
+
+	async checkProductsById(ids: string[]): Promise<Product[]> {
+		const products = await prisma.product.findMany({
+			where: {
+				id: {
+					in: ids
+				}
+			}
+		});
+
+		return products;
+	}
 }
