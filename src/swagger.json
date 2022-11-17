@@ -154,6 +154,30 @@
 					"created_at": {
 						"type": "string",
 						"format": "date-time"
+					},
+					"order": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"format": "uuid"
+								},
+								"status": {
+									"type": "string",
+									"example": "waiting for approval"
+								},
+								"created_at": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"clientId": {
+									"type": "string",
+									"format": "uuid"
+								}
+							}
+						}
 					}
 				}
 			}
