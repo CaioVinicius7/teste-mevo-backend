@@ -5,7 +5,11 @@ import { IClientsRepository } from "../../../repositories/IClientsRepository";
 
 export class ClientsRepository implements IClientsRepository {
 	async getAll(): Promise<Client[]> {
-		const clients = await prisma.client.findMany();
+		const clients = await prisma.client.findMany({
+			include: {
+				order: true
+			}
+		});
 
 		return clients;
 	}
