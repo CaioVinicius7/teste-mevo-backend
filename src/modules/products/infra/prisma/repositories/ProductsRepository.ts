@@ -1,6 +1,7 @@
 import { Product } from "@prisma/client";
 
 import { prisma } from "../../../../../database/prismaClient";
+import { IUpdateProductQuantityDTO } from "../../../dtos/IUpdateProductQuantityDTO";
 import { IProductsRepository } from "../../../repositories/IProductsRepository";
 
 export class ProductsRepository implements IProductsRepository {
@@ -30,5 +31,22 @@ export class ProductsRepository implements IProductsRepository {
 		});
 
 		return products;
+	}
+
+	async updateProductsQuantity(
+		data: IUpdateProductQuantityDTO[]
+	): Promise<void> {
+		const queries = data.map((productData) => {
+			return prisma.product.update({
+				data: {
+					current_quantity: productData.quantity
+				},
+				where: {
+					id: productData.id
+				}
+			});
+		});
+
+		await prisma.$transaction(queries);
 	}
 }
