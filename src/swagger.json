@@ -1,0 +1,286 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Orders API - Mevo",
+		"description": "O Projeto se trata de uma api onde o usuário pode listar clientes, listar produtos, listar produto por id e adicionar um novo pedido para um cliente",
+		"version": "1.0.0",
+		"contact": {
+			"email": "caio1525pereira@gmail.com"
+		}
+	},
+	"paths": {
+		"/api/client": {
+			"get": {
+				"tags": ["Clients"],
+				"summary": "Listagem de clientes",
+				"description": "Listagem de todos clientes registrados no sistema",
+				"responses": {
+					"200": {
+						"description": "Sucesso ao listar todos os clientes",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ListClients200"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/product": {
+			"get": {
+				"tags": ["Products"],
+				"summary": "Listagem de produtos",
+				"description": "Listagem de todos produtos registrados no sistema",
+				"responses": {
+					"200": {
+						"description": "Sucesso ao listar todos os produtos",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ListProducts200"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/product/{id}": {
+			"get": {
+				"tags": ["Products"],
+				"summary": "Listagem de produto por id",
+				"description": "Listagem de produto específico filtrado por id",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "delivery id",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Sucesso ao listar o produto filtrado por id",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ListProductById200"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Produto com id informado não foi encontrado",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ListProductById404"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/order": {
+			"post": {
+				"tags": ["Orders"],
+				"summary": "Criação de novo pedido",
+				"description": "Criação de novo pedido vinculado a um cliente",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/definitions/CreateOrderRequest"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Pedido criado",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/CreateOrderResponse200"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Lista de produtos vazia | Um ou mais ids de produtos passados na requisição estão incorretos | Um ou mais produtos não tem a quantidade solicitada disponível",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/CreateOrderResponse400"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "O Cliente com o id passado na requisição não existe",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/CreateOrderResponse401"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"ListClients200": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"name": {
+						"type": "string",
+						"example": "Teclado"
+					},
+					"created_at": {
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			}
+		},
+		"ListProducts200": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"name": {
+						"type": "name",
+						"example": "Teclado"
+					},
+					"is_active": {
+						"type": "boolean"
+					},
+					"current_quantity": {
+						"type": "number",
+						"example": 5
+					},
+					"created_at": {
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			}
+		},
+		"ListProductById200": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"format": "uuid"
+				},
+				"name": {
+					"type": "name",
+					"example": "Teclado"
+				},
+				"is_active": {
+					"type": "boolean"
+				},
+				"current_quantity": {
+					"type": "number",
+					"example": 5
+				},
+				"created_at": {
+					"type": "string",
+					"format": "date-time"
+				}
+			}
+		},
+		"ListProductById404": {
+			"type": "object",
+			"properties": {
+				"message": {
+					"type": "string",
+					"example": "Product not found"
+				}
+			}
+		},
+		"CreateOrderRequest": {
+			"type": "object",
+			"properties": {
+				"clientId": {
+					"type": "string",
+					"format": "uuid"
+				},
+				"products": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"productId": {
+								"type": "string",
+								"format": "uuid"
+							},
+							"quantity": {
+								"type": "number",
+								"example": "1"
+							}
+						}
+					}
+				}
+			}
+		},
+		"CreateOrderResponse200": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"format": "uuid"
+				},
+				"status": {
+					"type": "string",
+					"example": "waiting for approval"
+				},
+				"created_at": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"clientId": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		},
+		"CreateOrderResponse400": {
+			"type": "object",
+			"properties": {
+				"message": {
+					"type": "string",
+					"example": "The products list is empty | One or more products contains an incorrect id | one or more requested products are out of stock"
+				}
+			}
+		},
+		"CreateOrderResponse401": {
+			"type": "object",
+			"properties": {
+				"message": {
+					"type": "string",
+					"example": "A client with this id does not exists"
+				}
+			}
+		}
+	}
+}
