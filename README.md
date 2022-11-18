@@ -20,7 +20,7 @@ Caso queira ver as funcionalidades por completo e de modo técnico acesse a docu
 ## ⚠ Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina:
-[Node](https://nodejs.org/en/download/), [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/get-started/), [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) e [Insominia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/downloads/).
+[Node](https://nodejs.org/en/download/), [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/get-started/) e [Insominia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/downloads/).
 
 ## 🎲 Rodando a API
 
@@ -37,7 +37,7 @@ $ code .
 # crie o arquivos .env e o preencha seguindo o aquivo .env.example
 
 # Baixe as dependências
-$ yarn
+$ yarn ou npm install
 
 # Faça o build dos containers
 $ docker-compose build
@@ -46,13 +46,13 @@ $ docker-compose build
 $ docker-compose up -d
 
 # Rode as migrations
-$ yarn prisma migrate deploy
+$ yarn prisma migrate deploy ou npx prisma migrate deploy
 
 # Rode as seeds
-$ yarn prisma db seed
+$ yarn prisma db seed ou npx prisma db seed
 
 # Rode o servidor
-$ yarn dev
+$ yarn dev ou npm run dev
 
 
 # O servidor ficara ativo na porta definida no arquivo .env - acesse <http://localhost:{port}/api>
