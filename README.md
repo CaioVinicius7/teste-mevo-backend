@@ -2,11 +2,11 @@
 	Teste Backend - Mevo 
 </h2>
 
-## O que é essa API?
+## 💭 O que é essa API?
 
 Essa API é projeto utilizado como teste técnico de backend para vaga de desenvolvedor fullstack na [Mevo](https://mevosaude.com.br/).
 
-## Quais são as funcionalidades desse sistema?
+## ✨ Quais são as funcionalidades desse sistema?
 
 O sistema conta com as seguintes funcionalidades:
 
@@ -17,12 +17,12 @@ O sistema conta com as seguintes funcionalidades:
 
 Caso queira ver as funcionalidades por completo e de modo técnico acesse a documentação do projeto ([clique aqui](#docs) para ver como acessá-la).
 
-## Pré-requisitos
+## ⚠ Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina:
 [Node](https://nodejs.org/en/download/), [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/get-started/) e [Insominia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/downloads/).
 
-## :game_die: Rodando a API
+## 🎲 Rodando a API
 
 ```bash
 # Clone este repositório
@@ -58,13 +58,13 @@ $ yarn dev
 # O servidor ficara ativo na porta definida no arquivo .env - acesse <http://localhost:{port}/api>
 ```
 
-## :tools: Como rodar os testes
+## 🛠 Como rodar os testes
 
 Para rodar os testes rode o script `test:before` após ter rodado os containers e depois rode o script `test`.
 
 <div id="docs"> </div>
 
-## :scroll: Acessando a documentação
+## 📜 Acessando a documentação
 
 Para ter acesso a documentação utilize a rota /api-docs após a inicialização da aplicação.
 
