@@ -20,7 +20,7 @@ Caso queira ver as funcionalidades por completo e de modo técnico acesse a docu
 ## ⚠ Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina:
-[Node](https://nodejs.org/en/download/), [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/get-started/) e [Insominia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/downloads/).
+[Node](https://nodejs.org/en/download/), [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/get-started/), [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) e [Insominia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/downloads/).
 
 ## 🎲 Rodando a API
 
@@ -60,7 +60,9 @@ $ yarn dev
 
 ## 🛠 Como rodar os testes
 
-Para rodar os testes rode o script `test:before` após ter rodado os containers e depois rode o script `test`.
+Para rodar os testes rode o script `test:before` após ter rodado os containers, para executar as migrations e as seeds no container que será utilizado para rodar os testes e depois rode o script `test` para executar os testes.
+
+Obs: Rode o script `test:before` todas vezes que queira rodar novamente as migrations ou as seeds no container de testes devido a alguma alteração ou algo do tipo.
 
 <div id="docs"> </div>
 
