@@ -3,6 +3,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+	await prisma.product_Order.deleteMany();
+	await prisma.order.deleteMany();
+	await prisma.client.deleteMany();
+	await prisma.product.deleteMany();
+
 	await prisma.client.createMany({
 		data: [
 			{
